@@ -614,7 +614,7 @@ func (c *AgentCommand) Run(args []string) int {
 	return 0
 }
 
-// verifyRequestHeader wraps an http.Handler inside a Handler that checks for
+// verifyRequestHeader wraps an http.handler inside a handler that checks for
 // the request header that is used for SSRF protection.
 func verifyRequestHeader(handler http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

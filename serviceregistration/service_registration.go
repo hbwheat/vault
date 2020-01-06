@@ -22,6 +22,7 @@ type ServiceRegistration interface {
 
 	// NotifyPerformanceStandbyStateChange is used by Core to notify that this
 	// Vault instance has changed it status to performance standby or standby.
+	// TODO does this appear currently in the RFC?
 	NotifyPerformanceStandbyStateChange() error
 
 	// Run executes any background service discovery tasks until the
