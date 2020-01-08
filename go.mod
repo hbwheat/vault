@@ -134,5 +134,8 @@ require (
 	gopkg.in/mgo.v2 v2.0.0-20180705113604-9856a29383ce
 	gopkg.in/ory-am/dockertest.v3 v3.3.4
 	gopkg.in/square/go-jose.v2 v2.3.1
+	k8s.io/apimachinery v0.0.0-20190409092423-760d1845f48b
+	k8s.io/client-go v11.0.0+incompatible
+	k8s.io/utils v0.0.0-20200108110541-e2fb8e668047 // indirect
 	layeh.com/radius v0.0.0-20190322222518-890bc1058917
 )
