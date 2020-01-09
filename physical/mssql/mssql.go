@@ -94,6 +94,12 @@ func NewMSSQLBackend(conf map[string]string, logger log.Logger) (physical.Backen
 		schema = "dbo"
 	}
 
+	// add flag for pre made db on sql server
+	dbCreated, ok := conf["dbCreated"]
+	if !ok || dbCreated == "" {
+		dbCreated = "0"
+	}
+
 	connectionString := fmt.Sprintf("server=%s;app name=%s;connection timeout=%s;log=%s", server, appname, connectionTimeout, logLevel)
 	if username != "" {
 		connectionString += ";user id=" + username
@@ -105,6 +111,11 @@ func NewMSSQLBackend(conf map[string]string, logger log.Logger) (physical.Backen
 
 	if port != "" {
 		connectionString += ";port=" + port
+	}
+
+	// pre-made db flag true or false
+	if conf["dbCreated"] == "1" {
+		connectionString += ";database=" + database
 	}
 
 	db, err := sql.Open("mssql", connectionString)
