@@ -1,11 +1,80 @@
 package kubernetes
 
-func NewLightWeightClient() LightWeightClient {
-	return &lightWeightClient{}
+// TODO make every effort to avoid using client-go.
+// TODO
+// To put or to patch, that is the question.
+// https://kubernetes.io/docs/tasks/run-application/update-api-object-kubectl-patch/
+
+import (
+	"k8s.io/client-go/kubernetes"
+	"k8s.io/client-go/rest"
+)
+
+type Pod struct {
+	Labels map[string]string
+	// TODO more will need to be read in here
 }
 
-// TODO audit all methods called on the client and
-// add them to the interface here, then swap them out.
-type LightWeightClient interface{}
+func NewLightWeightClient() (LightWeightClient, error) {
+	conf, err := rest.InClusterConfig()
+	if err != nil {
+		return nil, err
+	}
+	clientSet, err := kubernetes.NewForConfig(conf)
+	if err != nil {
+		return nil, err
+	}
+	return &lightWeightClient{
+		clientSet:clientSet,
+	}, nil
+}
 
-type lightWeightClient struct{}
+type LightWeightClient interface{
+	GetPod(namespace, podName string) (*Pod, error)
+	UpdatePod(namespace string, pod *Pod) error
+	PatchPodTag(namespace, podName, tagKey, tagValue string) error
+}
+
+type lightWeightClient struct{
+	clientSet *kubernetes.Clientset
+}
+
+func (c *lightWeightClient) GetPod(namespace, podName string) (*Pod, error) {
+	// TODO
+	/*
+		pod, err := clientSet.CoreV1().Pods(namespace).Get(podName, metav1.GetOptions{})
+		if err != nil {
+			return nil, err
+		}
+	 */
+	return nil, nil
+}
+
+func (c *lightWeightClient) UpdatePod(namespace string, pod *Pod) error {
+	// TODO
+	/*
+		if _, err := clientSet.CoreV1().Pods(namespace).Update(pod); err != nil {
+			return nil, err
+		}
+	 */
+	return nil
+}
+
+func (c *lightWeightClient) PatchPodTag(namespace, podName, tagKey, tagValue string) error {
+	// TODO
+	/*
+		patch := map[string]string{
+			"op":    "add",
+			"path":  "/spec/template/metadata/labels/" + key,
+			"value": toString(value),
+		}
+		data, err := json.Marshal([]interface{}{patch})
+		if err != nil {
+			return err
+		}
+		if _, err := r.clientSet.CoreV1().Pods(r.namespace).Patch(r.podName, types.JSONPatchType, data); err != nil {
+			return err
+		}
+	 */
+	return nil
+}

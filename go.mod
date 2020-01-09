@@ -43,7 +43,7 @@ require (
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/go-test/deep v1.0.2
 	github.com/gocql/gocql v0.0.0-20190402132108-0e1d5de854df
-	github.com/gogo/protobuf v1.2.1
+	github.com/gogo/protobuf v1.2.2-0.20190723190241-65acae22fc9d
 	github.com/golang/protobuf v1.3.2
 	github.com/google/go-github v17.0.0+incompatible
 	github.com/google/go-metrics-stackdriver v0.0.0-20190816035513-b52628e82e2a
@@ -126,7 +126,7 @@ require (
 	go.etcd.io/etcd v0.0.0-20190412021913-f29b1ada1971
 	go.uber.org/atomic v1.4.0
 	golang.org/x/crypto v0.0.0-20191106202628-ed6320f186d4
-	golang.org/x/net v0.0.0-20190813141303-74dc4d7220e7
+	golang.org/x/net v0.0.0-20191004110552-13f9640d40b9
 	golang.org/x/oauth2 v0.0.0-20190402181905-9f3314589c9a
 	google.golang.org/api v0.5.0
 	google.golang.org/genproto v0.0.0-20190801165951-fa694d86fc64
@@ -134,8 +134,5 @@ require (
 	gopkg.in/mgo.v2 v2.0.0-20180705113604-9856a29383ce
 	gopkg.in/ory-am/dockertest.v3 v3.3.4
 	gopkg.in/square/go-jose.v2 v2.3.1
-	k8s.io/apimachinery v0.0.0-20190409092423-760d1845f48b
-	k8s.io/client-go v11.0.0+incompatible
-	k8s.io/utils v0.0.0-20200108110541-e2fb8e668047 // indirect
 	layeh.com/radius v0.0.0-20190322222518-890bc1058917
 )
